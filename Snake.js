@@ -8,11 +8,26 @@ function eatApple() {
 }
 // Declares the function eatApple, which will trigger everytime snake will "eat" an apple and increase its width property by 10px
 
-document.getElementById("test").addEventListener("keypress", checkKey);
-function checkKey(arg) {
-    return(arg.keyCode);
+document.addEventListener("keydown", key);
+
+function key(e) {
+    value = e.keyCode;
+// Gets keycode of the pressed key
+    if (value == 38) {
+         //snake.top  
+    }
+    else if (value == 37) {
+         //move left
+    }
+    else if (value == 39) {
+         //move rigth
+    }
+    else if (value == 40) {
+         //move down
+    }
+// triggers the snake movement when the player pressess the relevant arrows on the number pad
 }
-// Get keycode of the pressed key
+
 
 /* function move() {
     if ()
