@@ -9,29 +9,41 @@ function eatApple() {
 // Declares the function eatApple, which will trigger everytime snake will "eat" an apple and increase its width property by 10px
 
 document.addEventListener("keydown", key);
+// Listens for keystrokes and initializes the function "key" when they happen
 
 function key(e) {
     value = e.keyCode;
-// Gets keycode of the pressed key
-    if (value == 38) {
-         //snake.top  
-    }
-    else if (value == 37) {
-         //move left
-    }
-    else if (value == 39) {
-         //move rigth
-    }
-    else if (value == 40) {
-         //move down
-    }
-// triggers the snake movement when the player pressess the relevant arrows on the number pad
+    // stores the keyCode of the pressed key in the variable value
+
+    move(value);
+    // initializes the function "move", which will check the keyCode to  
+    // determine what movement, if any, to apply to snake 
 }
 
+function move(value) {
+   
+    var posV = snake.offsetTop;
+    var posH = snake.offsetLeft;
+    // stores the current top and left position in the respective variables
 
-/* function move() {
-    if ()
-    var currLeftPos = snake.offsetLeft;
-    while (
-        snake.style.left = pixelLeft(currLeftPos + 1)
-}*/
+    setInterval(slither, 10);
+    // main method consenting movement: invokes the slither function once every 10 ms
+
+    function slither() {
+
+      if (value == 38) {
+        snake.style.top = (posV --) + "px";
+      }
+      if (value == 40) {
+        snake.style.top = (posV ++) + "px";
+      }
+      if (value == 37) {
+        snake.style.left = (posH --) + "px";
+      }
+      if (value == 39) {
+        snake.style.left = (posH ++) + "px";
+      }
+    }
+    // function regolating movement depending on keyCode
+}
+
