@@ -1,4 +1,21 @@
+var snake = []
 
+function section (xpos,ypos) {
+    this.xpos = xpos;
+    this.ypos = ypos;
+    this.width = 10px;
+    this.height = 10px;
+    this.color = green;
+}
+
+function start () {
+    for (var i = 0; i<5; i++) {
+        snake.push(section(snake[i] +10, 10));
+    }
+}
+// creates the initial snake. Will need to add an Event Listener to trigger start
+
+/*
 var snake = document.getElementById("Snake");
 //Defines the variable snake and stores the element Snake within it. Going forward, snake will be treated as an Object with its properties being the same as the CSS ones.
 
@@ -46,4 +63,4 @@ function move(value) {
     }
     // function regolating movement depending on keyCode
 }
-
+*/
