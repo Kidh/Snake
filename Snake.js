@@ -1,11 +1,17 @@
 var snake = []
+// creates the snake array. To be populated with sections as the snake gets longer.
 
-function section (xpos,ypos) {
-    this.xpos = xpos;
-    this.ypos = ypos;
-    this.width = 10px;
-    this.height = 10px;
-    this.color = green;
+function section (xpos, ypos) {
+    var div = document.createElement("div");
+// creates a new div element (a new section)
+    
+    div.style.left = xpos+"px";
+    div.style.top = ypos+"px";
+    div.style.width = 10px;
+    div.style.heigth = 10px;
+    div.style.background = "green";
+    
+    document.appendChild(div);
 }
 
 function start () {
