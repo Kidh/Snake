@@ -5,13 +5,14 @@ function section (xpos, ypos) {
     var div = document.createElement("div");
 // creates a new div element (a new section)
     
+    div.style.position = "absolute";
     div.style.left = xpos+"px";
     div.style.top = ypos+"px";
-    div.style.width = 10px;
-    div.style.heigth = 10px;
-    div.style.background = "green";
+    div.style.width = "10px";
+    div.style.height = "10px";
+    div.style.backgroundColor = "red";
     
-    document.appendChild(div);
+    document.body.appendChild(div);
 }
 
 function start () {
