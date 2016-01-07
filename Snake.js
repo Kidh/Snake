@@ -16,9 +16,15 @@ function section (xpos, ypos) {
 }
 
 function start () {
-    for (var i = 0; i<5; i++) {
-        snake.push(section(snake[i] +10, 10));
-    }
+    
+    var head = {self: section(50,300)}
+    snake.push(head);
+//  creates obj head, which is a reference to a new section
+
+    for (var i = 0; i<3; i++) {
+    var part = {self: section(snake[i].offsetLeft + 10), 300)}
+    snake.push(part);
+
 }
 // creates the initial snake. Will need to add an Event Listener to trigger start
 
