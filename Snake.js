@@ -1,6 +1,37 @@
 var snake = []
 // creates the snake array. To be populated with sections as the snake gets longer.
 
+document.addEventListener("keydown", key);
+// listens for a keydown event and initializes the function key
+
+function key(e) {
+    value = e.keyCode;
+// stores the keyCode of the pressed key in the variable value
+       
+    if (value == 38 || value == 40 || value ==37 || value == 39) {
+// checks if the key is one the of the approved ones
+
+        if (snake.length >= 4) {
+// checks if it is the first time that the user is pressing the key   
+            if (value == 38) {
+               return;
+            }
+            else if (value == 40) {
+               return;
+            }
+            else if (value == 37) {
+               return;
+            }
+            else if (value == 39) {
+               return;
+            }
+         }
+         else {
+            start();
+         }
+    }
+}
+
 function section (xpos, ypos) {
     var div = document.createElement("div");
 // creates a new div element (a new section)
