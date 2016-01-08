@@ -10,23 +10,23 @@ function section (xpos, ypos) {
     div.style.top = ypos+"px";
     div.style.width = "10px";
     div.style.height = "10px";
-    div.style.backgroundColor = "red";
+    div.style.backgroundColor = "green";
     
     document.body.appendChild(div);
 }
 
 function start () {
     
-    var head = {self: section(50,300)}
+    var head = section(40,200);
     snake.push(head);
-//  creates obj head, which is a reference to a new section
+//  creates head of the snake and push it into the snake array
 
-    for (var i = 0; i<3; i++) {
-    var part = {self: section(snake[i].offsetLeft + 10), 300)}
-    snake.push(part);
-
+    for (var i = 10; i<40; i = i + 10) {
+    snake.push(section(i, 200));
+    }
+//  creates the initial body of the snake
 }
-// creates the initial snake. Will need to add an Event Listener to trigger start
+
 
 /*
 var snake = document.getElementById("Snake");
