@@ -6,49 +6,49 @@ window.addEventListener("load", ready);
 
 function ready () {
 
-   for (var i = 40; i>= 10; i = i - 10) {
-       section(i, 200);
+   for (var i = 40, l = 0; i>= 10; i = i - 10, l++) {
+       section(l,i, 200);
    }
 }
 //  creates the initial body of the snake once the page loads(length = 4);
 
-function section (xpos, ypos) {
-   for (var i = 0; i<1; i++) {
-       window['newPart' + i] = document.createElement('div');
+function section (name,xpos,ypos) {
+   
+       window['newPart' + name] = document.createElement('div');
 // creates the div that will represent a body part of the snake
 // dynamic variable names are needed in order to be able to later access
-// their properties using the function "move"
+// their properties using the function move
 
-       snake.push('newPart' + i);
+       snake.push('newPart' + name);
 // push the new part onto the snake array
       
-       window['newPart' + i].style.position = "absolute";
-       window['newPart' + i].style.left = xpos+"px";
-       window['newPart' + i].style.top = ypos+"px";
-       window['newPart' + i].style.width = "10px";
-       window['newPart' + i].style.height = "10px";
-       window['newPart' + i].style.backgroundColor = "green";  
+       window['newPart' + name].style.position = "absolute";
+       window['newPart' + name].style.left = xpos+"px";
+       window['newPart' + name].style.top = ypos+"px";
+       window['newPart' + name].style.width = "10px";
+       window['newPart' + name].style.height = "10px";
+       window['newPart' + name].style.backgroundColor = "green";  
 
-       document.body.appendChild(window['newPart' + i]);
-
-   }
+       document.body.appendChild(window['newPart' + name]);
 }
 
-document.addEventListener("keydown", key);
+document.addEventListener("keydown", move);
 // listens for a keydown event and initializes the function key
 
-function key(e) {
+function move(e) {
     value = e.keyCode;
 // stores the keyCode of the pressed key in the variable value
        
     if (value == 38 || value == 40 || value ==37 || value == 39) {
 // checks if the key is one the of the approved ones
-   
+        
         if (value == 38) {
-            for (var l = snake.length - 1; l >= 0; l--) {
-                var currPos = window['newPart' + l].offsetLeft
-                alert(currPos);
+
+            for (var c = snake.length -1; c >0; c--) {
+                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";                
             }
+            var currHeadPos = newPart0.offsetTop;
+            newPart0.style.top = (currHeadPos - 10) + "px";
         }
         else if (value == 40) {
             return;
@@ -61,7 +61,6 @@ function key(e) {
         }
     }
 }
-
 
 
 /* var snake = []
