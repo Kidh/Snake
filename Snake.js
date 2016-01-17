@@ -41,23 +41,43 @@ function move(e) {
        
     if (value == 38 || value == 40 || value ==37 || value == 39) {
 // checks if the key is one the of the approved ones
-        
+
+        var currHeadPosT = newPart0.offsetTop;
+        var currHeadPosL = newPart0.offsetLeft;
+// store the top and left position for the head of the snake
+
         if (value == 38) {
 
             for (var c = snake.length -1; c >0; c--) {
-                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";                
+                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
+                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
             }
-            var currHeadPos = newPart0.offsetTop;
-            newPart0.style.top = (currHeadPos - 10) + "px";
+
+            newPart0.style.top = (currHeadPosT - 10) + "px";
         }
         else if (value == 40) {
-            return;
+            for (var c = snake.length -1; c >0; c--) {
+                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
+                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
+            }
+
+            newPart0.style.top = (currHeadPosT + 10) + "px";
         }
         else if (value == 37) {
-            return;
+            for (var c = snake.length -1; c >0; c--) {
+                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
+                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
+            }
+
+            newPart0.style.left = (currHeadPosL - 10) + "px";            
         }
         else if (value == 39) {
-            return;
+            for (var c = snake.length -1; c >0; c--) {
+                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
+                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
+            }
+
+            newPart0.style.left = (currHeadPosL + 10) + "px";
         }
     }
 }
