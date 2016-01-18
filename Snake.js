@@ -32,56 +32,98 @@ function section (name,xpos,ypos) {
        document.body.appendChild(window['newPart' + name]);
 }
 
-document.addEventListener("keydown", move);
-// listens for a keydown event and initializes the function key
+var direction = "right";
+// stores the current direction of the snake. To be defined by the movement functions (default: right);
 
-function move(e) {
-    value = e.keyCode;
-// stores the keyCode of the pressed key in the variable value
-       
-    if (value == 38 || value == 40 || value ==37 || value == 39) {
-// checks if the key is one the of the approved ones
-
-        var currHeadPosT = newPart0.offsetTop;
-        var currHeadPosL = newPart0.offsetLeft;
-// store the top and left position for the head of the snake
-
-        if (value == 38) {
-
-            for (var c = snake.length -1; c >0; c--) {
-                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
-                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
-            }
-
-            newPart0.style.top = (currHeadPosT - 10) + "px";
-        }
-        else if (value == 40) {
-            for (var c = snake.length -1; c >0; c--) {
-                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
-                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
-            }
-
-            newPart0.style.top = (currHeadPosT + 10) + "px";
-        }
-        else if (value == 37) {
-            for (var c = snake.length -1; c >0; c--) {
-                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
-                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
-            }
-
-            newPart0.style.left = (currHeadPosL - 10) + "px";            
-        }
-        else if (value == 39) {
-            for (var c = snake.length -1; c >0; c--) {
-                window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
-                window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
-            }
-
-            newPart0.style.left = (currHeadPosL + 10) + "px";
-        }
+function slither () {
+    for (var c = snake.length -1; c >0; c--) {
+        window['newPart' + c].style.left = (window['newPart' + (c - 1)].offsetLeft) + "px";
+        window['newPart' + c].style.top = (window['newPart' + (c - 1)].offsetTop) + "px";                
     }
 }
+// main movement loop for the body of the snake;
 
+document.addEventListener("keydown", key);
+// listens for a keydown event and initializes the function key
+
+function moveUp () {
+    currHeadPosT = newPart0.offsetTop;
+    currHeadPosL = newPart0.offsetLeft;
+//store the current position of the head of the snake. Need to put within the //move functions as otherwise they won't be initialized by setInterval in key();
+    slither();
+    newPart0.style.top = (currHeadPosT - 10) + "px";
+    direction = "up";
+}
+
+function moveDown() {
+    currHeadPosT = newPart0.offsetTop;
+    currHeadPosL = newPart0.offsetLeft;
+    slither();
+    newPart0.style.top = (currHeadPosT + 10) + "px";
+    direction = "down";
+}
+
+function moveLeft() {
+    currHeadPosT = newPart0.offsetTop;
+    currHeadPosL = newPart0.offsetLeft;
+    slither();
+    newPart0.style.left = (currHeadPosL - 10) + "px";
+    direction = "left";
+}
+
+function moveRight() {
+    currHeadPosT = newPart0.offsetTop;
+    currHeadPosL = newPart0.offsetLeft;
+    slither();
+    newPart0.style.left = (currHeadPosL + 10) + "px";
+    direction = "right";
+}
+// functions defining movement
+
+function key(e) {
+        
+
+    value = e.keyCode;
+// stores the keyCode of the pressed key in the variable value
+
+    if (value == 38 && direction != "down") {
+        if (movement = undefined){        
+            clearInterval(movement);
+            movement = setInterval(moveUp, 50);
+        } 
+        else {
+        movement = setInterval(moveUp, 50);
+        }                  
+    }
+    else if (value == 40 && direction != "up") {
+        if (movement = undefined){        
+            clearInterval(movement);
+            movement = setInterval(moveDown, 50);
+        } 
+        else {
+        movement = setInterval(moveDown, 50);
+        }       
+    }
+
+    else if (value == 37 && direction != "right") {
+        if (movement = undefined){        
+            clearInterval(movement);
+            movement = setInterval(moveDown, 50);
+        } 
+        else {
+        movement = setInterval(moveDown, 50);
+        }
+    }
+    else if (value == 39 && direction != "left") {
+        if (movement = undefined){        
+            clearInterval(movement);
+            movement = setInterval(moveRight, 50);
+        } 
+        else {
+        movement = setInterval(moveRight, 50);
+        } 
+    }
+}
 
 /* var snake = []
 // creates the snake array. To be populated with sections as the snake gets longer.
