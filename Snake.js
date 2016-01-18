@@ -80,48 +80,30 @@ function moveRight() {
 }
 // functions defining movement
 
+var movement;
+// need to declare movement to be used in key.
+
 function key(e) {
         
-
     value = e.keyCode;
 // stores the keyCode of the pressed key in the variable value
 
     if (value == 38 && direction != "down") {
-        if (movement = undefined){        
-            clearInterval(movement);
-            movement = setInterval(moveUp, 50);
-        } 
-        else {
-        movement = setInterval(moveUp, 50);
-        }                  
+        clearInterval(movement);
+        movement = setInterval(moveUp,50);
     }
     else if (value == 40 && direction != "up") {
-        if (movement = undefined){        
-            clearInterval(movement);
-            movement = setInterval(moveDown, 50);
-        } 
-        else {
-        movement = setInterval(moveDown, 50);
-        }       
+        clearInterval(movement);
+        movement = setInterval(moveDown,50);     
     }
 
     else if (value == 37 && direction != "right") {
-        if (movement = undefined){        
-            clearInterval(movement);
-            movement = setInterval(moveDown, 50);
-        } 
-        else {
-        movement = setInterval(moveDown, 50);
-        }
+        clearInterval(movement);
+        movement = setInterval(moveLeft,50);
     }
     else if (value == 39 && direction != "left") {
-        if (movement = undefined){        
-            clearInterval(movement);
-            movement = setInterval(moveRight, 50);
-        } 
-        else {
-        movement = setInterval(moveRight, 50);
-        } 
+        clearInterval(movement);
+        movement = setInterval(moveRight,50);
     }
 }
 
