@@ -1,12 +1,19 @@
 var snake = []
 // creates the snake array. To be populated with sections as the snake gets longer.
 
+var edge = document.body.getBoundingClientRect();
+    edgeT = edge.top;
+    edgeB = edge.bottom;
+    edgeL = edge.left;
+    edgeR = edge.right;
+// sets the borders of the game board (same as window);
+
 window.addEventListener("load", ready);
 // not quite sure why document.addEventListener("load", ready) does not work
 
 function ready () {
 
-   for (var i = 40, l = 0; i>= 10; i = i - 10, l++) {
+   for (var i = 50, l = 0; i>= 20; i = i - 10, l++) {
        section(l,i, 200);
    }
 }
@@ -50,6 +57,11 @@ function moveUp () {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
 //store the current position of the head of the snake. Need to put within the //move functions as otherwise they won't be initialized by setInterval in key();
+    if (currHeadPosT < edgeT) {
+        clearInterval(movement);
+        alert('crash');
+    } 
+// temporary "crash with border" checker
     slither();
     newPart0.style.top = (currHeadPosT - 10) + "px";
     direction = "up";
@@ -58,6 +70,10 @@ function moveUp () {
 function moveDown() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
+    if (currHeadPosT > edgeB) {
+        clearInterval(movement);
+        alert('crash');
+    } 
     slither();
     newPart0.style.top = (currHeadPosT + 10) + "px";
     direction = "down";
@@ -66,6 +82,10 @@ function moveDown() {
 function moveLeft() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
+    if (currHeadPosL < edgeL) {
+        clearInterval(movement);
+        alert('crash');
+    } 
     slither();
     newPart0.style.left = (currHeadPosL - 10) + "px";
     direction = "left";
@@ -74,6 +94,10 @@ function moveLeft() {
 function moveRight() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
+    if (currHeadPosL > edgeR) {
+        clearInterval(movement);
+        alert('crash');
+    } 
     slither();
     newPart0.style.left = (currHeadPosL + 10) + "px";
     direction = "right";
