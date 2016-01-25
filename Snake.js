@@ -1,10 +1,6 @@
 var snake = []
 // creates the snake array. To be populated with sections as the snake gets longer.
 
-<<<<<<< HEAD
-var snake = []
-// creates the snake array. To be populated with sections as the snake gets longer.
-=======
 var edge = document.body.getBoundingClientRect();
     edgeT = edge.top;
     edgeB = edge.bottom;
