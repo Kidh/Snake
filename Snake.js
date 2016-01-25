@@ -64,8 +64,9 @@ function moveUp () {
     if (currHeadPosT < edgeT) {
         clearInterval(movement);
         alert('crash');
+        location.reload();
     } 
-// temporary "crash with border" checker
+// temporary "crash with border" checker. probably need to change location.reload() to something else to reset
     slither();
     newPart0.style.top = (currHeadPosT - 10) + "px";
     direction = "up";
@@ -77,6 +78,7 @@ function moveDown() {
     if (currHeadPosT > edgeB) {
         clearInterval(movement);
         alert('crash');
+        location.reload();
     } 
     slither();
     newPart0.style.top = (currHeadPosT + 10) + "px";
@@ -89,6 +91,7 @@ function moveLeft() {
     if (currHeadPosL < edgeL) {
         clearInterval(movement);
         alert('crash');
+        location.reload();
     } 
     slither();
     newPart0.style.left = (currHeadPosL - 10) + "px";
@@ -101,6 +104,7 @@ function moveRight() {
     if (currHeadPosL > edgeR) {
         clearInterval(movement);
         alert('crash');
+        location.reload();
     } 
     slither();
     newPart0.style.left = (currHeadPosL + 10) + "px";
@@ -134,6 +138,27 @@ function key(e) {
         movement = setInterval(moveRight,50);
     }
 }
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
+
+
+function apple () {
+
+     var div = document.createElement('div');
+     document.body.appendChild(div)
+
+     div.style.position = "absolute";
+     div.style.left = getRandomInt(edgeT, edgeB) + "px";
+     div.style.top = getRandomInt(edgeT, edgeB) + "px";
+     div.style.width = "10px";
+     div.style.height = "10px";
+     div.style.backgroundColor = "red";  
+}
+// need to make sure that does not appear where the snake is located
 
 /*
 var snake = document.getElementById("Snake");
