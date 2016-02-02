@@ -145,7 +145,6 @@ function getRandomInt(min, max) {
 function apple () {
 
      var div = document.createElement('div');
-     document.body.appendChild(div)
 
      div.style.position = "absolute";
      div.style.left = getRandomInt(edgeT, edgeB) + "px";
@@ -153,6 +152,18 @@ function apple () {
      div.style.width = "10px";
      div.style.height = "10px";
      div.style.backgroundColor = "red";  
+     
+     function checkOverlap () {
+
+         for (var i=0; i < snake.length; i++) {
+            if (div.offsetLeft != window['newPart' + i].offsetLeft && 
+            div.offsetTop != window['newPart' + i].offsetTop) {
+                document.body.appenChild(div);
+            }   
+         }
+      }
+     
+     checkOverlap();
 }
 // need to make sure that does not appear where the snake is located
 
