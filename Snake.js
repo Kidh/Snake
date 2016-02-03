@@ -16,8 +16,10 @@ function ready () {
    for (var i = 50, l = 0; i>= 20; i = i - 10, l++) {
        section(l,i, 200);
    }
+   
+   apple();
 }
-//  creates the initial body of the snake once the page loads(length = 4);
+//  creates the initial body of the snake (length = 4) and the first apple once the page loads
 
 function section (name,xpos,ypos) {
    
@@ -141,31 +143,45 @@ function getRandomInt(min, max) {
 
 // taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
 
-
 function apple () {
 
      var div = document.createElement('div');
 
      div.style.position = "absolute";
-     div.style.left = getRandomInt(edgeT, edgeB) + "px";
+     div.style.left = getRandomInt(edgeL, edgeR) + "px";
      div.style.top = getRandomInt(edgeT, edgeB) + "px";
      div.style.width = "10px";
      div.style.height = "10px";
      div.style.backgroundColor = "red";  
      
-     function checkOverlap () {
+     (function () {
 
-         for (var i=0; i < snake.length; i++) {
+         for (var i=0; i <= snake.length; i++) {
             if (div.offsetLeft != window['newPart' + i].offsetLeft && 
-            div.offsetTop != window['newPart' + i].offsetTop) {
-                document.body.appenChild(div);
+                div.offsetTop != window['newPart' + i].offsetTop) {
+                document.body.appendChild(div);
             }   
          }
-      }
-     
-     checkOverlap();
+      })();
+// anonymous function needed to check that apples do not overlap with snake
+
+     appleL = div.offsetLeft;
+     appleT = div.offsetTop;
+// needed for function eat() below
 }
-// need to make sure that does not appear where the snake is located
+
+function eat () {
+
+    if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        var value = snake.length;
+        var x = window['newPart' + (c-1)].offsetLeft;
+        var y = window['newPart' + (c-1)].offsetTop;
+
+    section(value, x, y);
+    apple();
+    }
+}
 
 /*
 var snake = document.getElementById("Snake");
