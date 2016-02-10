@@ -157,8 +157,8 @@ function apple () {
      (function () {
 
          for (var i=0; i <= snake.length; i++) {
-            if (div.offsetLeft != window['newPart' + i].offsetLeft && 
-                div.offsetTop != window['newPart' + i].offsetTop) {
+            if (div.offsetLeft != ['newPart' + i].offsetLeft && 
+                div.offsetTop != ['newPart' + i].offsetTop) {
                 document.body.appendChild(div);
             }   
          }
