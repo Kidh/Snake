@@ -138,10 +138,10 @@ function key(e) {
 }
 
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.round(Math.floor(Math.random() * (max - min) + min)/10) * 10;
 }
 
-// taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
+// modified from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
 
 function apple () {
 
