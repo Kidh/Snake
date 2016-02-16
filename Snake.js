@@ -59,15 +59,32 @@ function moveUp () {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
 //store the current position of the head of the snake. Need to put within the //move functions as otherwise they won't be initialized by setInterval in key();
-    if (currHeadPosT < edgeT) {
+    if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        var value = snake.length;
+        var x = ['newPart' + (value - 1)].offsetLeft;
+        var y = ['newPart' + (value - 1)].offsetTop + 10;
+
+        section(value, x, y);
+        slither();
+        newPart0.style.top = (currHeadPosT - 10) + "px";
+        direction = "up";
+    }
+ //adds new section whenever an apple is eaten
+    else if (currHeadPosT < edgeT) {
         clearInterval(movement);
         alert('crash');
         location.reload();
     } 
 // temporary "crash with border" checker. probably need to change location.reload() to something else to reset
-    slither();
-    newPart0.style.top = (currHeadPosT - 10) + "px";
-    direction = "up";
+    
+    else {
+    
+        slither();
+        newPart0.style.top = (currHeadPosT - 10) + "px";
+        direction = "up";
+    }
+// standard movement handler
 }
 
 function moveDown() {
@@ -167,21 +184,9 @@ function apple () {
 
      appleL = div.offsetLeft;
      appleT = div.offsetTop;
-// needed for function eat() below
+// needed to determine whenever snake eats an apple in the move functions
 }
 
-function eat () {
-
-    if (appleL == currHeadPosL && appleT == currHeadPosT) {
-        
-        var value = snake.length;
-        var x = window['newPart' + (c-1)].offsetLeft;
-        var y = window['newPart' + (c-1)].offsetTop;
-
-    section(value, x, y);
-    apple();
-    }
-}
 
 /*
 var snake = document.getElementById("Snake");
