@@ -90,40 +90,86 @@ function moveUp () {
 function moveDown() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
-    if (currHeadPosT > edgeB) {
+  
+    if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        var value = snake.length;
+        var x = ['newPart' + (value - 1)].offsetLeft;
+        var y = ['newPart' + (value - 1)].offsetTop - 10;
+
+        section(value, x, y);
+        slither();
+        newPart0.style.top = (currHeadPosT + 10) + "px";
+        direction = "down";
+    }
+    
+    else if (currHeadPosT > edgeB) {
         clearInterval(movement);
         alert('crash');
         location.reload();
     } 
-    slither();
-    newPart0.style.top = (currHeadPosT + 10) + "px";
-    direction = "down";
+  
+    else { 
+        slither();
+        newPart0.style.top = (currHeadPosT + 10) + "px";
+        direction = "down";
+    }
 }
 
 function moveLeft() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
-    if (currHeadPosL < edgeL) {
+
+    if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        var value = snake.length;
+        var x = ['newPart' + (value - 1)].offsetLeft + 10;
+        var y = ['newPart' + (value - 1)].offsetTop;
+
+        section(value, x, y);
+        slither();
+        newPart0.style.left = (currHeadPosL - 10) + "px";
+        direction = "left";
+    }
+    else if (currHeadPosL < edgeL) {
         clearInterval(movement);
         alert('crash');
         location.reload();
     } 
-    slither();
-    newPart0.style.left = (currHeadPosL - 10) + "px";
-    direction = "left";
+  
+    else {
+        slither();
+        newPart0.style.left = (currHeadPosL - 10) + "px";
+        direction = "left";
+    }
 }
 
 function moveRight() {
     currHeadPosT = newPart0.offsetTop;
     currHeadPosL = newPart0.offsetLeft;
-    if (currHeadPosL > edgeR) {
+
+    if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        var value = snake.length;
+        var x = ['newPart' + (value - 1)].offsetLeft - 10;
+        var y = ['newPart' + (value - 1)].offsetTop;
+
+        section(value, x, y);
+        slither();
+        newPart0.style.left = (currHeadPosL + 10) + "px";
+        direction = "right";
+    }
+  
+    else if (currHeadPosL > edgeR) {
         clearInterval(movement);
         alert('crash');
         location.reload();
     } 
-    slither();
-    newPart0.style.left = (currHeadPosL + 10) + "px";
-    direction = "right";
+    else {
+        slither();
+        newPart0.style.left = (currHeadPosL + 10) + "px";
+        direction = "right";
+    }
 }
 // functions defining movement
 
