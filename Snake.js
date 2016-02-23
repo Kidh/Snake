@@ -61,6 +61,9 @@ function moveUp () {
 //store the current position of the head of the snake. Need to put within the //move functions as otherwise they won't be initialized by setInterval in key();
     if (appleL == currHeadPosL && appleT == currHeadPosT) {
         
+        document.body.removeChild(fruit);
+        apple();
+        
         var value = snake.length;
         var x = ['newPart' + (value - 1)].offsetLeft;
         var y = ['newPart' + (value - 1)].offsetTop + 10;
@@ -93,6 +96,9 @@ function moveDown() {
   
     if (appleL == currHeadPosL && appleT == currHeadPosT) {
         
+        document.body.removeChild(fruit);
+        apple();
+        
         var value = snake.length;
         var x = ['newPart' + (value - 1)].offsetLeft;
         var y = ['newPart' + (value - 1)].offsetTop - 10;
@@ -122,6 +128,9 @@ function moveLeft() {
 
     if (appleL == currHeadPosL && appleT == currHeadPosT) {
         
+        document.body.removeChild(fruit);
+        apple();
+        
         var value = snake.length;
         var x = ['newPart' + (value - 1)].offsetLeft + 10;
         var y = ['newPart' + (value - 1)].offsetTop;
@@ -149,6 +158,9 @@ function moveRight() {
     currHeadPosL = newPart0.offsetLeft;
 
     if (appleL == currHeadPosL && appleT == currHeadPosT) {
+        
+        document.body.removeChild(fruit);
+        apple();
         
         var value = snake.length;
         var x = ['newPart' + (value - 1)].offsetLeft - 10;
@@ -208,28 +220,28 @@ function getRandomInt(min, max) {
 
 function apple () {
 
-     var div = document.createElement('div');
+     fruit = document.createElement('div');
 
-     div.style.position = "absolute";
-     div.style.left = getRandomInt(edgeL, edgeR) + "px";
-     div.style.top = getRandomInt(edgeT, edgeB) + "px";
-     div.style.width = "10px";
-     div.style.height = "10px";
-     div.style.backgroundColor = "red";  
+     fruit.style.position = "absolute";
+     fruit.style.left = getRandomInt(edgeL, edgeR) + "px";
+     fruit.style.top = getRandomInt(edgeT, edgeB) + "px";
+     fruit.style.width = "10px";
+     fruit.style.height = "10px";
+     fruit.style.backgroundColor = "red";  
      
      (function () {
 
          for (var i=0; i <= snake.length; i++) {
-            if (div.offsetLeft != ['newPart' + i].offsetLeft && 
-                div.offsetTop != ['newPart' + i].offsetTop) {
-                document.body.appendChild(div);
+            if (fruit.offsetLeft != ['newPart' + i].offsetLeft && 
+                fruit.offsetTop != ['newPart' + i].offsetTop) {
+                document.body.appendChild(fruit);
             }   
          }
       })();
 // anonymous function needed to check that apples do not overlap with snake
-
-     appleL = div.offsetLeft;
-     appleT = div.offsetTop;
+     
+     appleL = fruit.offsetLeft;
+     appleT = fruit.offsetTop;
 // needed to determine whenever snake eats an apple in the move functions
 }
 
