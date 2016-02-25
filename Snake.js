@@ -77,12 +77,13 @@ function moveUp () {
     else if (currHeadPosT < edgeT) {
         clearInterval(movement);
         alert('crash');
+        alert("score = " + snake.length);
         location.reload();
     } 
 // temporary "crash with border" checker. probably need to change location.reload() to something else to reset
     
     else {
-    
+        override();
         slither();
         newPart0.style.top = (currHeadPosT - 10) + "px";
         direction = "up";
@@ -112,10 +113,12 @@ function moveDown() {
     else if (currHeadPosT > edgeB) {
         clearInterval(movement);
         alert('crash');
+        alert("score = " + snake.length);
         location.reload();
     } 
   
     else { 
+        override();
         slither();
         newPart0.style.top = (currHeadPosT + 10) + "px";
         direction = "down";
@@ -143,10 +146,12 @@ function moveLeft() {
     else if (currHeadPosL < edgeL) {
         clearInterval(movement);
         alert('crash');
+        alert("score = " + snake.length);
         location.reload();
     } 
   
     else {
+        override();
         slither();
         newPart0.style.left = (currHeadPosL - 10) + "px";
         direction = "left";
@@ -175,9 +180,11 @@ function moveRight() {
     else if (currHeadPosL > edgeR) {
         clearInterval(movement);
         alert('crash');
+        alert("score = " + snake.length);
         location.reload();
     } 
     else {
+        override();
         slither();
         newPart0.style.left = (currHeadPosL + 10) + "px";
         direction = "right";
@@ -244,6 +251,20 @@ function apple () {
      appleT = fruit.offsetTop;
 // needed to determine whenever snake eats an apple in the move functions
 }
+
+function override () {
+  
+     for (var i=1; i < snake.length; i++) {
+        if (currHeadPosL == window['newPart' + i].offsetLeft && 
+            currHeadPosT == window['newPart' + i].offsetTop) {
+                clearInterval(movement);
+                alert('crash');
+                alert("score = " + snake.length);
+                location.reload();
+        }  
+    }
+}
+// to check if snake crashes with itself
 
 
 /*
