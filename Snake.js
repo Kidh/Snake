@@ -80,7 +80,8 @@ function moveUp () {
         alert("score = " + snake.length);
         location.reload();
     } 
-// temporary "crash with border" checker. probably need to change location.reload() to something else to reset
+// "crash with border" checker. probably need to change location.reload() to something else to reset
+// need to better define borders
     
     else {
         override();
